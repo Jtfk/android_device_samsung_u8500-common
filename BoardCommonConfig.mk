@@ -88,7 +88,6 @@ BOARD_BLUEDROID_VENDOR_CONF := device/samsung/u8500-common/bluetooth/vnd_u8500.t
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/u8500-common/ril/
-BOARD_NEEDS_SEC_RIL_WORKAROUND := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
