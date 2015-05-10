@@ -159,7 +159,6 @@ TW_CRYPTO_FS_FLAGS := "0x00000406"
 TW_CRYPTO_KEY_LOC := "/efs/metadata"
 TW_INCLUDE_FUSE_EXFAT := true
 TW_BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/u8500-common/recovery/twrp-graphics.c
-TARGET_RECOVERY_FSTAB := device/samsung/codina/recovery/recovery.fstab
 TW_BRIGHTNESS_PATH := /sys/class/backlight/panel/brightness
 TW_MAX_BRIGHTNESS := 255
 TW_NO_USB_STORAGE := true
