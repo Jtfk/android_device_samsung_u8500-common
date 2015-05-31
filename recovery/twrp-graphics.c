@@ -1,18 +1,18 @@
 /*
-* Copyright (C) 2007 The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright (C) 2007 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 #include <stdbool.h>
 #include <stdlib.h>
@@ -80,14 +80,14 @@ static struct fb_fix_screeninfo fi;
 #ifdef PRINT_SCREENINFO
 static void print_fb_var_screeninfo()
 {
-LOGI("vi.xres: %d\n", vi.xres);
-LOGI("vi.yres: %d\n", vi.yres);
-LOGI("vi.xres_virtual: %d\n", vi.xres_virtual);
-LOGI("vi.yres_virtual: %d\n", vi.yres_virtual);
-LOGI("vi.xoffset: %d\n", vi.xoffset);
-LOGI("vi.yoffset: %d\n", vi.yoffset);
-LOGI("vi.bits_per_pixel: %d\n", vi.bits_per_pixel);
-LOGI("vi.grayscale: %d\n", vi.grayscale);
+	LOGI("vi.xres: %d\n", vi.xres);
+	LOGI("vi.yres: %d\n", vi.yres);
+	LOGI("vi.xres_virtual: %d\n", vi.xres_virtual);
+	LOGI("vi.yres_virtual: %d\n", vi.yres_virtual);
+	LOGI("vi.xoffset: %d\n", vi.xoffset);
+	LOGI("vi.yoffset: %d\n", vi.yoffset);
+	LOGI("vi.bits_per_pixel: %d\n", vi.bits_per_pixel);
+	LOGI("vi.grayscale: %d\n", vi.grayscale);
 }
 #endif
 
@@ -113,49 +113,49 @@ static int get_framebuffer(GGLSurface *fb)
     vi.bits_per_pixel = PIXEL_SIZE * 8;
     if (PIXEL_FORMAT == GGL_PIXEL_FORMAT_BGRA_8888) {
         fprintf(stderr, "Pixel format: BGRA_8888\n");
-        if (PIXEL_SIZE != 4) fprintf(stderr, "E: Pixel Size mismatch!\n");
-        vi.red.offset = 8;
-        vi.red.length = 8;
-        vi.green.offset = 16;
-        vi.green.length = 8;
-        vi.blue.offset = 24;
-        vi.blue.length = 8;
-        vi.transp.offset = 0;
-        vi.transp.length = 8;
+        if (PIXEL_SIZE != 4)    fprintf(stderr, "E: Pixel Size mismatch!\n");
+        vi.red.offset     = 8;
+        vi.red.length     = 8;
+        vi.green.offset   = 16;
+        vi.green.length   = 8;
+        vi.blue.offset    = 24;
+        vi.blue.length    = 8;
+        vi.transp.offset  = 0;
+        vi.transp.length  = 8;
     } else if (PIXEL_FORMAT == GGL_PIXEL_FORMAT_RGBX_8888) {
         fprintf(stderr, "Pixel format: RGBX_8888\n");
-        if (PIXEL_SIZE != 4) fprintf(stderr, "E: Pixel Size mismatch!\n");
-        vi.red.offset = 24;
-        vi.red.length = 8;
-        vi.green.offset = 16;
-        vi.green.length = 8;
-        vi.blue.offset = 8;
-        vi.blue.length = 8;
-        vi.transp.offset = 0;
-        vi.transp.length = 8;
+        if (PIXEL_SIZE != 4)    fprintf(stderr, "E: Pixel Size mismatch!\n");
+        vi.red.offset     = 24;
+        vi.red.length     = 8;
+        vi.green.offset   = 16;
+        vi.green.length   = 8;
+        vi.blue.offset    = 8;
+        vi.blue.length    = 8;
+        vi.transp.offset  = 0;
+        vi.transp.length  = 8;
 // TODO is this backwards RGB and BGR?
     } else if (PIXEL_FORMAT == GGL_PIXEL_FORMAT_RGB_565) {
 #ifndef RECOVERY_RGB_565
-fprintf(stderr, "Pixel format: RGB_565\n");
-vi.blue.offset = 0;
-vi.green.offset = 5;
-vi.red.offset = 11;
+	fprintf(stderr, "Pixel format: RGB_565\n");
+	vi.blue.offset    = 0;
+	vi.green.offset   = 5;
+	vi.red.offset     = 11;
 #else
         fprintf(stderr, "Pixel format: BGR_565\n");
-vi.blue.offset = 11;
-vi.green.offset = 5;
-vi.red.offset = 0;
+	vi.blue.offset    = 11;
+	vi.green.offset   = 5;
+	vi.red.offset     = 0;
 #endif
-if (PIXEL_SIZE != 2)
-fprintf(stderr, "E: Pixel Size mismatch!\n");
-vi.blue.length = 5;
-vi.green.length = 6;
-vi.red.length = 5;
+	if (PIXEL_SIZE != 2)
+	    fprintf(stderr, "E: Pixel Size mismatch!\n");
+	vi.blue.length    = 5;
+	vi.green.length   = 6;
+	vi.red.length     = 5;
         vi.blue.msb_right = 0;
         vi.green.msb_right = 0;
         vi.red.msb_right = 0;
-        vi.transp.offset = 0;
-        vi.transp.length = 0;
+        vi.transp.offset  = 0;
+        vi.transp.length  = 0;
     }
     else
     {
@@ -225,7 +225,7 @@ vi.red.length = 5;
     memset(fb->data, 0, vi.yres * fb->stride * PIXEL_SIZE);
 
 #ifdef PRINT_SCREENINFO
-print_fb_var_screeninfo();
+	print_fb_var_screeninfo();
 #endif
 
     return fd;
@@ -242,10 +242,10 @@ static void get_memory_surface(GGLSurface* ms) {
 
 static void set_active_framebuffer(unsigned n)
 {
-    if (n > 1 || !double_buffering) return;
+    if (n > 1  || !double_buffering) return;
     vi.yres_virtual = vi.yres * NUM_BUFFERS;
     vi.yoffset = n * vi.yres;
-// vi.bits_per_pixel = PIXEL_SIZE * 8;
+//    vi.bits_per_pixel = PIXEL_SIZE * 8;
     if (ioctl(gr_fb_fd, FBIOPUT_VSCREENINFO, &vi) < 0) {
         perror("active fb swap failed");
     }
@@ -270,7 +270,7 @@ void gr_flip(void)
 #endif
 
     /* copy data from the in-memory surface to the buffer we're about
-* to make active. */
+     * to make active. */
     memcpy(gr_framebuffer[gr_active_fb].data, gr_mem_surface.data,
            vi.xres_virtual * vi.yres * PIXEL_SIZE);
 
@@ -319,7 +319,7 @@ int gr_maxExW(const char *s, void* font, int max_width)
     unsigned pos;
     unsigned off;
 
-    if (!fnt)   fnt = gr_font;
+    if (!fnt) fnt = gr_font;
 
 #ifndef TW_DISABLE_TTF
     if(fnt->type == FONT_TYPE_TTF)
@@ -331,12 +331,12 @@ int gr_maxExW(const char *s, void* font, int max_width)
         off -= 32;
         if (off < 96) {
             max_width -= (fnt->offset[off+1] - fnt->offset[off]);
-			if (max_width > 0) {
-				total++;
-			} else {
-				return total;
-			}
-		}
+                        if (max_width > 0) {
+                                total++;
+                        } else {
+                               return total;
+                        }
+                }
     }
     return total;
 }
@@ -367,9 +367,9 @@ int gr_textEx(int x, int y, const char *s, void* pFont)
         cwidth = 0;
         if (off < 96) {
             cwidth = font->offset[off+1] - font->offset[off];
-gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
-gl->recti(gl, x, y, x + cwidth, y + font->cheight);
-x += cwidth;
+			gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
+			gl->recti(gl, x, y, x + cwidth, y + font->cheight);
+			x += cwidth;
         }
     }
 
@@ -402,16 +402,16 @@ int gr_textExW(int x, int y, const char *s, void* pFont, int max_width)
         cwidth = 0;
         if (off < 96) {
             cwidth = font->offset[off+1] - font->offset[off];
-if ((x + (int)cwidth) < max_width) {
-gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
-gl->recti(gl, x, y, x + cwidth, y + font->cheight);
-x += cwidth;
-} else {
-gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
-gl->recti(gl, x, y, max_width, y + font->cheight);
-x = max_width;
-return x;
-}
+			if ((x + (int)cwidth) < max_width) {
+				gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
+				gl->recti(gl, x, y, x + cwidth, y + font->cheight);
+				x += cwidth;
+			} else {
+				gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
+				gl->recti(gl, x, y, max_width, y + font->cheight);
+				x = max_width;
+				return x;
+			}
         }
     }
 
@@ -424,7 +424,7 @@ int gr_textExWH(int x, int y, const char *s, void* pFont, int max_width, int max
     GRFont *font = (GRFont*) pFont;
     unsigned off;
     unsigned cwidth;
-int rect_x, rect_y;
+	int rect_x, rect_y;
 
     /* Handle default font */
     if (!font)  font = gr_font;
@@ -445,24 +445,38 @@ int rect_x, rect_y;
         cwidth = 0;
         if (off < 96) {
             cwidth = font->offset[off+1] - font->offset[off];
-if ((x + (int)cwidth) < max_width)
-rect_x = x + cwidth;
-else
-rect_x = max_width;
-if (y + font->cheight < (unsigned int)(max_height))
-rect_y = y + font->cheight;
-else
-rect_y = max_height;
+			if ((x + (int)cwidth) < max_width)
+				rect_x = x + cwidth;
+			else
+				rect_x = max_width;
+			if (y + font->cheight < (unsigned int)(max_height))
+				rect_y = y + font->cheight;
+			else
+				rect_y = max_height;
 
-gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
-gl->recti(gl, x, y, rect_x, rect_y);
-x += cwidth;
-if (x > max_width)
-return x;
+			gl->texCoord2i(gl, (font->offset[off]) - x, 0 - y);
+			gl->recti(gl, x, y, rect_x, rect_y);
+			x += cwidth;
+			if (x > max_width)
+				return x;
         }
     }
 
     return x;
+}
+
+void gr_clip(int x, int y, int w, int h)
+{
+    GGLContext *gl = gr_context;
+    gl->scissor(gl, x, y, w, h);
+    gl->enable(gl, GGL_SCISSOR_TEST);
+}
+
+void gr_noclip()
+{
+    GGLContext *gl = gr_context;
+    gl->scissor(gl, 0, 0, gr_fb_width(), gr_fb_height());
+    gl->disable(gl, GGL_SCISSOR_TEST);
 }
 
 void gr_fill(int x, int y, int w, int h)
@@ -470,6 +484,45 @@ void gr_fill(int x, int y, int w, int h)
     GGLContext *gl = gr_context;
     gl->disable(gl, GGL_TEXTURE_2D);
     gl->recti(gl, x, y, x + w, y + h);
+}
+
+void gr_line(int x0, int y0, int x1, int y1, int width)
+{
+    GGLContext *gl = gr_context;
+
+    const int coords0[2] = { x0 << 4, y0 << 4 };
+    const int coords1[2] = { x1 << 4, y1 << 4 };
+    gl->linex(gl, coords0, coords1, width << 4);
+}
+
+gr_surface gr_render_circle(int radius, unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+{
+    int rx, ry;
+    GGLSurface *surface;
+    const int diameter = radius*2 + 1;
+    const int radius_check = radius*radius + radius*0.8;
+    const uint32_t px = (a << 24) | (b << 16) | (g << 8) | r;
+    uint32_t *data;
+
+    surface = malloc(sizeof(GGLSurface));
+    memset(surface, 0, sizeof(GGLSurface));
+
+    data = malloc(diameter * diameter * 4);
+    memset(data, 0, diameter * diameter * 4);
+
+    surface->version = sizeof(surface);
+    surface->width = diameter;
+    surface->height = diameter;
+    surface->stride = diameter;
+    surface->data = (GGLubyte*)data;
+    surface->format = GGL_PIXEL_FORMAT_RGBA_8888;
+
+    for(ry = -radius; ry <= radius; ++ry)
+        for(rx = -radius; rx <= radius; ++rx)
+            if(rx*rx+ry*ry <= radius_check)
+                *(data + diameter*(radius + ry) + (radius+rx)) = px;
+
+    return surface;
 }
 
 void gr_blit(gr_surface source, int sx, int sy, int w, int h, int dx, int dy) {
@@ -516,7 +569,7 @@ void* gr_loadFont(const char* fontName)
     {
         char tmp[128];
 
-        sprintf(tmp, "/res/fonts/%s.dat", fontName);
+        sprintf(tmp, TWRES "fonts/%s.dat", fontName);
         fd = open(tmp, O_RDONLY);
         if (fd == -1)
             return NULL;
@@ -541,10 +594,10 @@ void* gr_loadFont(const char* fontName)
         read(fd, &data, 1);
         for (bit = 0; bit < 8; bit++)
         {
-            if (data & (1 << (7-bit))) bits[pos++] = 255;
-            else bits[pos++] = 0;
+            if (data & (1 << (7-bit)))  bits[pos++] = 255;
+            else                        bits[pos++] = 0;
 
-            if (pos == width * height) break;
+            if (pos == width * height)  break;
         }
     }
     close(fd);
@@ -572,8 +625,8 @@ int gr_getMaxFontHeight(void *font)
 {
     GRFont *fnt = (GRFont*) font;
 
-    if (!fnt) fnt = gr_font;
-    if (!fnt) return -1;
+    if (!fnt)   fnt = gr_font;
+    if (!fnt)   return -1;
 
 #ifndef TW_DISABLE_TTF
     if(fnt->type == FONT_TYPE_TTF)
@@ -661,22 +714,22 @@ int gr_init_orig(void)
     gl->enable(gl, GGL_BLEND);
     gl->blendFunc(gl, GGL_SRC_ALPHA, GGL_ONE_MINUS_SRC_ALPHA);
 
-// gr_fb_blank(true);
-// gr_fb_blank(false);
+//    gr_fb_blank(true);
+//    gr_fb_blank(false);
 
     return 0;
 }
 
 /*
-* TODO this is total hax. fix meh please.
-*
-* Round 1
-* framebuffer: fd 4 (480 x 800)
-*
-* Round 2
-* framebuffer: fd 6 (480 x 800)
-*
-*/
+ * TODO this is total hax. fix meh please.
+ *
+ * Round 1
+ * framebuffer: fd 4 (480 x 800)
+ *
+ * Round 2
+ * framebuffer: fd 6 (480 x 800)
+ *
+*/ 
 int gr_init(void) {
     int ret;
     // round 1
@@ -726,7 +779,7 @@ int gr_fb_blank(int blank)
 int gr_get_surface(gr_surface* surface)
 {
     GGLSurface* ms = malloc(sizeof(GGLSurface));
-    if (!ms) return -1;
+    if (!ms)    return -1;
 
     // Allocate the data
     get_memory_surface(ms);
