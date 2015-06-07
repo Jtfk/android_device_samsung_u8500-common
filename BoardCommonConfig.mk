@@ -144,13 +144,12 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 # TWRP flags
 DEVICE_RESOLUTION := 480x800
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
-#RECOVERY_SDCARD_ON_DATA := true
 TW_HAS_NO_RECOVERY_PARTITION := true
 TW_FLASH_FROM_STORAGE := true
+TW_INTERNAL_STORAGE_PATH := "/storage/sdcard0"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard0"
 TW_EXTERNAL_STORAGE_PATH := "/storage/sdcard1"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "storage/sdcard1"
-TW_DEFAULT_EXTERNAL_STORAGE := true
-#TW_INCLUDE_CRYPTO := true
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard1"
 TW_INCLUDE_JB_CRYPTO := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/mmcblk0p5"
@@ -165,3 +164,8 @@ TW_MAX_BRIGHTNESS := 255
 TW_NO_USB_STORAGE := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
+TW_THEME := portrait_mdpi
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab \
+    $(LOCAL_PATH)/recovery/recovery.fstab:recovery/root/etc/recovery.fstab
