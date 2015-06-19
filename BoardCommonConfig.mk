@@ -165,7 +165,5 @@ TW_NO_USB_STORAGE := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_THEME := portrait_mdpi
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab \
-    $(LOCAL_PATH)/recovery/recovery.fstab:recovery/root/etc/recovery.fstab
+TW_EXCLUDE_SUPERSU := true
+TW_NO_CPU_TEMP := true
